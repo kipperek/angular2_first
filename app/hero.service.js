@@ -27,6 +27,13 @@ var HeroService = (function () {
     HeroService.prototype.getHeroes = function () {
         return Promise.resolve(HEROES);
     };
+    HeroService.prototype.getHero = function (id) {
+        return this.getHeroes()
+            .then(function (heroes) { return heroes.find(function (hero) { return hero.id === id; }); });
+    };
+    HeroService.prototype.goBack = function () {
+        this.location.back();
+    };
     HeroService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
